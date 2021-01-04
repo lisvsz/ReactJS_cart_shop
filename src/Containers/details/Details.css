@@ -1,0 +1,73 @@
+.detailsBox {
+    background-color: aquamarine;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 810px;
+    position: relative;
+}
+
+.productDetailsCard {
+    background-color: plum;
+    display: flex;
+    flex: row;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-items: start;
+    height: 305px;
+    left: 790px;
+    position: absolute;
+    text-align: start;
+    top: 80px;
+    width: 380px;
+}
+
+.productPic {
+    height: 334.27px;
+    left: 359px;
+    position: absolute;
+    top: 56px;
+    width: 250px;
+}
+
+.v2 {
+    border: 1px solid #E3E3E3;
+    position: absolute;
+    right: 220px;
+    top: 492px;
+    width: 958px;
+}
+
+.btnCartDetails {
+    margin-top: 28px;
+    width: 380px;
+}
+
+.starsDetails {
+    display: flex;
+    margin-bottom: 18px;
+    margin-top: 10px;
+}
+
+.price {
+    margin-bottom: 14px;
+}
+
+.commentsBox {
+    background-color: plum;
+    display: flex;
+    flex: row;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-items: start;
+    left: 400px;
+    position: absolute;
+    text-align: start;
+    top: 550px;
+    width: 380px;
+}
+
+.v3 {
+    border: 1px solid #E3E3E3;
+    right: 220px;
+    top: 492px;
+    width: 873px;
+}

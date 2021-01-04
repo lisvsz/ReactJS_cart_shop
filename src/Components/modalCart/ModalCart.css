@@ -1,0 +1,32 @@
+.modalCart {
+    background-color: cadetblue;
+    font-size: 18px;
+    height: 812px;
+    position: absolute;
+    right: 0;
+    text-align: start;
+    width: 493px;
+}
+
+.modalCard {
+    padding: 31px 77px 208px 48px;
+}
+
+.btnClose {
+    cursor: pointer;
+    height: 30px;
+    position: absolute; 
+    right: 19px;
+    width: 30px;
+}
+
+.cartTitle {
+    font-size: 24px;
+    padding-bottom: 34px;
+}
+
+.btnProceedPay {
+    background-color: #2980B9;
+    margin-top: 15px;
+    width: 370px;
+}

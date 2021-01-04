@@ -1,0 +1,31 @@
+.filters{
+    height: 810px;
+    padding-top: 73px;
+    width: 259px;
+}
+
+.categories {
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    height: 240px;
+    justify-content: start;
+    margin-left: 41px;
+    width: 175px;
+}
+
+.v1 {
+    border-left: 1px solid #C6C2C2;
+    height: 755px;
+    position: absolute;
+    left: 257.99px;
+    margin-left: -3px;
+    top: 122px;
+}
+
+h2{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    text-align: start;
+}
+

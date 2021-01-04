@@ -1,0 +1,39 @@
+.productCard {
+    border: 2px solid cyan;
+    height: 298px;
+    width: 240px;
+}
+
+.productImg {
+    height: 119px;
+    padding-top: 28px;
+    width: 89px;
+}
+
+.productInfo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: start;
+    padding-left: 15px;
+    padding-top: 12px;
+    width: 100px;
+}
+
+.comment {
+    height: 10px;
+    width: 12px;
+}
+
+.btnDetails{
+    background-color: #2980B9;
+    height: 32px;
+    margin-bottom: 5px;
+    margin-top: 23px;
+    width: 240px;
+}
+
+.btnAddCart{
+    background-color: #2ECC71;
+    height: 32px;
+    width: 240px;
+}
