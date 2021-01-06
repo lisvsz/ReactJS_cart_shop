@@ -37,3 +37,17 @@
     height: 32px;
     width: 240px;
 }
+
+.basicLabel {
+    background-color: #11D000;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 400;
+    height: 15px;
+    position: absolute;
+    width: 59px;
+}
+
+.noBasicLabel {
+    display: none;
+}

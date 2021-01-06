@@ -21,7 +21,8 @@ const Filters = () => {
                     </label><br/> 
                 <h2>Sort by:</h2> <br/>
                     <select name="menu">
-                        <option value="relevante">Relevante</option>
+                        <option value="price">Price</option>
+                        <option value="rating">Rating</option>
                     </select>
             </div>
             <div className = "v1"></div>

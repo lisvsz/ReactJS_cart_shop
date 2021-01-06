@@ -18,7 +18,7 @@ app.get('/products', (req, res) => {
       let items = Math.min(req.query.items || 10);
 
       if (req.query.filter && req.query.filter === 'basics') {
-        result = products.filter(_product => _product.basics);
+        result = result.filter(_product => _product.basics);
       }
       
       if (req.query.sort) {

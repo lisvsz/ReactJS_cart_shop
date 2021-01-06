@@ -1,9 +1,9 @@
 import './App.css';
 import Header from './Components/header/Header';
 import Filters from './Components/filters/Filters';
-import Product from './Components/product/Product';
 import ModalCart from './Components/modalCart/ModalCart';
 
+import DisplayProducts from './Containers/displayProducts/DisplayProducts';
 import Details from './Containers/details/Details';
 import Shipped from './Containers/shipped/Shipped';
 import Form from './Containers/form/Form';
@@ -14,14 +14,7 @@ function App() {
       < Header />
       <div className ="productsBox">
         < Filters />
-        <div className ="productsGrid">
-          < Product />
-          < Product />
-          < Product />
-          < Product />
-          < Product />
-          < Product />
-        </div>
+        <DisplayProducts />
       </div>
       < Details />
       < Shipped />
