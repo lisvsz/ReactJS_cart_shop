@@ -1,6 +1,6 @@
 .productCard {
     border: 2px solid cyan;
-    height: 298px;
+    height: 313px;
     width: 240px;
 }
 
@@ -16,7 +16,25 @@
     justify-items: start;
     padding-left: 15px;
     padding-top: 12px;
+    text-align: start;
     width: 100px;
+}
+
+.productName {
+    width: 200px;
+}
+
+.productCom {
+    font-size: 12px;
+}
+
+.productPrice {
+    font-size: 18px;
+}
+
+.starComm{
+    display: flex;
+    flex-direction: row;
 }
 
 .comment {

@@ -1,6 +1,5 @@
 import './App.css';
 import Header from './Components/header/Header';
-import Filters from './Components/filters/Filters';
 import ModalCart from './Components/modalCart/ModalCart';
 
 import DisplayProducts from './Containers/displayProducts/DisplayProducts';
@@ -12,10 +11,7 @@ function App() {
   return (
     <div className="App">
       < Header />
-      <div className ="productsBox">
-        < Filters />
-        <DisplayProducts />
-      </div>
+      < DisplayProducts />
       < Details />
       < Shipped />
       < Form />
