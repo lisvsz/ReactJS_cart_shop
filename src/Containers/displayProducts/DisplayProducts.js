@@ -25,6 +25,8 @@ const DisplayProducts = (props) => {
     function scrolling (event) {
         
         const { scrollTop, clientHeight, scrollHeight } = event.srcElement.documentElement;
+
+        console.log('entro al evento')
         
         if (Math.ceil(scrollHeight - scrollTop) === clientHeight) {
             /*console.log("response", responseRef.current);
@@ -35,14 +37,14 @@ const DisplayProducts = (props) => {
             if (!(responseRef.current.currentPage === responseRef.current.pages)) {
                 addPage();
             };*/
-            console.log(responseRef.current.currentPage)
+            // console.log(responseRef.current.currentPage)
+            console.log('entro al primer if')
             if (!(responseRef.current.currentPage === responseRef.current.pages)) {
+                console.log('entro a cambiar pagina')
                 addPage();
             }
         };
 
-        console.log('response',scrollTop);
-        console.log('response', responseRef);
     }
 
     useEffect(() => {
@@ -83,13 +85,13 @@ const mapStateToProps = (state) => { //rootreducer
     return {
         products: state.fetchR.products,
         response: state.fetchR.response,
-        page: state.filtersR.page,
+        page: state.fetchR.page,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        fetchProducts: () => dispatch(actions.fetchProducts()),
+        fetchProducts: (pageNumber) => dispatch(actions.fetchProducts(pageNumber)),
         addPage: () => dispatch(actions.addPage()),
     }
 }

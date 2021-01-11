@@ -14,7 +14,7 @@ export const fetchProductsFailure = (error) => {
     }
 }
 
-export const fetchProducts = () => {
+export const fetchProducts = (pageNumber) => {
     // const res = await fetch('http://localhost:8080/products');
     // const data = await res.json();
     // console.log(data);
@@ -24,8 +24,7 @@ export const fetchProducts = () => {
     // });
     return (dispatch) => {
        // dispatch(fetchProductsStart());
-
-        fetch('http://localhost:8080/products')
+        fetch(`http://localhost:8080/products?page=${pageNumber}`)
             .then(response => {
                 return response.json();
             })

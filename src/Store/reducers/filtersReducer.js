@@ -12,8 +12,9 @@ const filterReducer = (state = initialState, action) => {
                 page: state.page + 1,
             }
         }
+
+        default: return state;
     }
-    return state;
 }
 
 export default filterReducer;
