@@ -12,10 +12,6 @@ function App() {
     <div className="App">
       < Header />
       < DisplayProducts />
-      < Details />
-      < Shipped />
-      < Form />
-      < ModalCart />
     </div>
   );
 }

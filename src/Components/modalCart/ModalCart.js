@@ -1,5 +1,7 @@
 import React from 'react';
 import './ModalCart.css';
+import { connect } from 'react-redux';
+
 import coffee from '../../assets/coffee.jpg';
 import recycleBin from '../../assets/recycle-bin.png';
 import close from '../../assets/close.png';

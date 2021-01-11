@@ -1,24 +1,57 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import './DisplayProducts.css';
 import Filters from '../../Components/filters/Filters';
 import Product from '../../Components/product/Product';
+import { connect } from 'react-redux';
+import * as actions from '../../Store/actions/index';
+import useScrollState from '../../myHooks/myHooks';
 
 //HOOK VERSION
-const DisplayProducts = () => {
+const DisplayProducts = (props) => {
 
-    //Defino estados de producto, filtros
-    const [products, setProducts] = useState([])
-    const [filters, setFilters] = useState([])
-
+    const { fetchProducts, addPage, products, response, page } = props;
+    const [responseRef, setResponseRef] = useScrollState(response);
+    
+    //Data products
     useEffect (() => {
-        fetch(`http://localhost:8080/products`)
-            .then(response => {
-                return response.json();
-            })
-            .then(responseJSON => {
-                // setResponse(responseJSON)
-                setProducts(responseJSON.products);
-            })
+        fetchProducts(page);
+    }, [fetchProducts, page])
+    
+    //Scroll
+    useEffect (() => {
+        setResponseRef(response)
+    }, [response, setResponseRef]);
+
+    function scrolling (event) {
+        
+        const { scrollTop, clientHeight, scrollHeight } = event.srcElement.documentElement;
+        
+        if (Math.ceil(scrollHeight - scrollTop) === clientHeight) {
+            /*console.log("response", responseRef.current);
+            console.log("response.currentPage ", responseRef.current.currentPage);
+            console.log("response.pages", responseRef.current.pages);
+            console.log("!response.currentPage === response.pages", !(responseRef.current.currentPage === responseRef.current.pages));
+    
+            if (!(responseRef.current.currentPage === responseRef.current.pages)) {
+                addPage();
+            };*/
+            console.log(responseRef.current.currentPage)
+            if (!(responseRef.current.currentPage === responseRef.current.pages)) {
+                addPage();
+            }
+        };
+
+        console.log('response',scrollTop);
+        console.log('response', responseRef);
+    }
+
+    useEffect(() => {
+        if (window) {
+            window.addEventListener('scroll', scrolling);
+        }
+        return () => {
+            window.removeEventListener('scroll', scrolling);
+        }
     }, [])
 
     return (
@@ -46,7 +79,22 @@ const DisplayProducts = () => {
     )
 }
 
-export default DisplayProducts;
+const mapStateToProps = (state) => { //rootreducer
+    return {
+        products: state.fetchR.products,
+        response: state.fetchR.response,
+        page: state.filtersR.page,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        fetchProducts: () => dispatch(actions.fetchProducts()),
+        addPage: () => dispatch(actions.addPage()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DisplayProducts);
 
 //CLASS VERSION
 

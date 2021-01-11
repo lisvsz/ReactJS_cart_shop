@@ -4,9 +4,13 @@ const port = 8080;
 var cors = require('cors');
 
 const axios = require('axios');
+const bodyParser = require('body-parser');
+
 const mockProducts = require('./mock-products');
+const mockDetail = require('./mock-detail');
 
 app.use(cors());
+app.use(bodyParser.json());
 
 app.get('/products', (req, res) => {
   axios.get('https://picsum.photos/v2/list')
@@ -14,7 +18,7 @@ app.get('/products', (req, res) => {
       let result = mockProducts;
       let imgData = results.data;
 
-      let page = Math.min(req.query.page || 1);
+      let page = Math.min(req.query.page || 1, 2);
       let items = Math.min(req.query.items || 10);
 
       if (req.query.filter && req.query.filter === 'basics') {
@@ -25,10 +29,12 @@ app.get('/products', (req, res) => {
         result = result.sort(sortFns[`sort${req.query.sort}`]);
       }
 
-      let pages = result.length / items;
+      let pages = result.length / items > 1 ? 2 : 1;
       let start = (page - 1) * items;
       let end = Math.min(items * page, result.length);
-      result = result.slice(start, end).map((_product, index) => ({
+      result = result
+        .slice(start, end)
+        .map((_product, index) => ({
         ..._product,
         img: imgData[index].download_url,
       }));
@@ -45,6 +51,23 @@ app.get('/products', (req, res) => {
     .catch(err => {
       console.log(err);
       res.json({message: 'CANNOT_RETURN_ELEMENTS'})
+    });
+});
+
+//Tony
+app.get('/products/:productId', (req, res) => {
+  axios
+    .get('https://picsum.photos/v2/list')
+    .then((results) => {
+      let result = mockDetail;
+      const imgData = results.data;
+      const productId = parseInt(req.params.productId);
+      result = result.find((product) => product.id === productId);
+      res.json({ ...result, img: imgData[productId - 1].download_url });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({ message: 'CANNOT_RETURN_PRODUCT_DETAIL' });
     });
 });
 
