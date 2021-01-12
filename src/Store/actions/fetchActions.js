@@ -1,4 +1,11 @@
-import { FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE, ADD_PAGE } from './actions'; 
+import { FETCH_PRODUCTS_SUCCESS, 
+    FETCH_PRODUCTS_FAILURE, 
+    ADD_PAGE, FILTER_BASICS, 
+    FILTER_BASICS_REMOVE, 
+    FILTER_PRICES, 
+    SORT_PRICES, 
+    SORT_RATING } from './actions'; 
+
 
 export const fetchProductsSuccess = (response) => {
     return {
@@ -14,17 +21,28 @@ export const fetchProductsFailure = (error) => {
     }
 }
 
-export const fetchProducts = (pageNumber) => {
+export const fetchProducts = (page, basics, rating) => {
     // const res = await fetch('http://localhost:8080/products');
     // const data = await res.json();
     // console.log(data);
-    // dispatch({
-    //     type: FETCH_PRODUCTS,
     //     payload: data.products,
     // });
+
     return (dispatch) => {
+
+    let url = `http://localhost:8080/products?page=${page}`
+
+    if (basics && rating) {
+        url = `http://localhost:8080/products?page=${page}&filter=${basics}&sort=${rating}`
+
+    } else if (basics) {
+        url = `http://localhost:8080/products?page=${page}&filter=${basics}`;
+
+    } else if (rating) {
+        url = `http://localhost:8080/products?page=${page}&sort=${rating}`;
+    };
        // dispatch(fetchProductsStart());
-        fetch(`http://localhost:8080/products?page=${pageNumber}`)
+        fetch(`http://localhost:8080/products?page=${page}`)
             .then(response => {
                 return response.json();
             })
@@ -45,6 +63,38 @@ export const addPage = () => {
     }
 }
 
+export const filterBasics = (basics) => {
+    return {
+        type: FILTER_BASICS,
+        basics: basics,
+    }
+}
+
+export const filterBasicsRemove = () => {
+    return {
+        type: FILTER_BASICS_REMOVE,
+    }
+}
+
+export const filterPrices = (priceFilter) => {
+    return {
+        type: FILTER_PRICES,
+        priceFilter: priceFilter,
+    }
+}
+
+export const sortPrices = () => {
+    return {
+        type: SORT_PRICES,
+    }
+}
+
+export const sortRating = () => {
+    return {
+        type: SORT_RATING,
+    }
+}
+
 /*useEffect (() => {
     fetch(`http://localhost:8080/products`)
         .then(response => {
@@ -55,3 +105,9 @@ export const addPage = () => {
             setProducts(responseJSON.products);
         })
 }, [])*/
+
+/*QUERIES:
+- page: NUMBER
+- items: NUMBER
+- filter: STRING 1-50, 51-100, 101-200
+- sort: ENUM[Prices | Raiting ]*/
