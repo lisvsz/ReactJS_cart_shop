@@ -1,10 +1,11 @@
 import { FETCH_PRODUCTS_SUCCESS, 
     FETCH_PRODUCTS_FAILURE, 
-    ADD_PAGE, FILTER_BASICS, 
+    ADD_PAGE, 
+    FILTER_BASICS, 
     FILTER_BASICS_REMOVE, 
     FILTER_PRICES, 
-    SORT_PRICES, 
-    SORT_RATING } from './actions'; 
+    SORT_RATING_PRICES,
+    SORT_REMOVE } from './actions'; 
 
 
 export const fetchProductsSuccess = (response) => {
@@ -20,8 +21,8 @@ export const fetchProductsFailure = (error) => {
         error: error
     }
 }
-
-export const fetchProducts = (page, basics, rating) => {
+// fetchProducts(page, filterOption, sortOption, filterPricesOn, pricesRange);
+export const fetchProducts = (page, filterOption, sortOption, filterPricesOn, pricesRange) => {
     // const res = await fetch('http://localhost:8080/products');
     // const data = await res.json();
     // console.log(data);
@@ -32,17 +33,17 @@ export const fetchProducts = (page, basics, rating) => {
 
     let url = `http://localhost:8080/products?page=${page}`
 
-    if (basics && rating) {
-        url = `http://localhost:8080/products?page=${page}&filter=${basics}&sort=${rating}`
+    if (filterOption && sortOption) {
+        url = `http://localhost:8080/products?page=${page}&filter=${filterOption}&sort=${sortOption}`
 
-    } else if (basics) {
-        url = `http://localhost:8080/products?page=${page}&filter=${basics}`;
+    } else if (filterOption) {
+        url = `http://localhost:8080/products?page=${page}&filter=${filterOption}`;
 
-    } else if (rating) {
-        url = `http://localhost:8080/products?page=${page}&sort=${rating}`;
+    } else if (sortOption) {
+        url = `http://localhost:8080/products?page=${page}&sort=${sortOption}`;
     };
        // dispatch(fetchProductsStart());
-        fetch(`http://localhost:8080/products?page=${page}`)
+        fetch(url)
             .then(response => {
                 return response.json();
             })
@@ -50,6 +51,9 @@ export const fetchProducts = (page, basics, rating) => {
                 console.log('fetch de productos en action creator con Thunk');
                 console.log(responseJSON.products);
                 dispatch(fetchProductsSuccess(responseJSON));
+                if (filterPricesOn) {
+                    filterPrices(pricesRange);
+                };
             })
             .catch(error => {
                 dispatch(fetchProductsFailure(error));
@@ -63,10 +67,10 @@ export const addPage = () => {
     }
 }
 
-export const filterBasics = (basics) => {
+export const filterBasics = (filterOption) => {
     return {
         type: FILTER_BASICS,
-        basics: basics,
+        filterOption: filterOption,
     }
 }
 
@@ -83,15 +87,16 @@ export const filterPrices = (priceFilter) => {
     }
 }
 
-export const sortPrices = () => {
+export const sortRatingPrices = (sortOption) => {
     return {
-        type: SORT_PRICES,
+        type: SORT_RATING_PRICES,
+        sortOption: sortOption,
     }
 }
 
-export const sortRating = () => {
+export const sortRemove = () => {
     return {
-        type: SORT_RATING,
+        type: SORT_REMOVE,
     }
 }
 

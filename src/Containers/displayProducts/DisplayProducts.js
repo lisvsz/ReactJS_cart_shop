@@ -9,18 +9,18 @@ import useScrollState from '../../myHooks/myHooks';
 //HOOK VERSION
 const DisplayProducts = (props) => {
 
-    const { fetchProducts, addPage, products, response, page, rating, pricesRange, filteredProducts, filterPrices} = props;
+    const { fetchProducts, addPage, products, response, page, filterOption, sortOption, pricesRange, filteredProducts, filterPricesOn } = props;
     const [responseRef, setResponseRef] = useScrollState(response);
     
     //Data products
     useEffect (() => {
-        fetchProducts(page, rating, pricesRange, filteredProducts, filterPrices);
-    }, [fetchProducts, page,  rating, pricesRange, filteredProducts, filterPrices])
+        fetchProducts(page, filterOption, sortOption, filterPricesOn, pricesRange);
+    }, [fetchProducts, page, filterOption, sortOption]) // Por que filterPricesOn no está aqui?
 
     //Filter
     let productsToRender = [];
 
-    if (pricesRange) {
+    if (filterPricesOn) {
         productsToRender = filteredProducts;
     } else {
         productsToRender = products;
@@ -86,8 +86,8 @@ const mapStateToProps = (state) => { //rootreducer
         products: state.fetchR.products,
         response: state.fetchR.response,
         page: state.fetchR.page,
-        basics: state.fetchR.basics,
-        rating: state.fetchR.rating,
+        filterOption: state.fetchR.filterOption,
+        sortOption: state.fetchR.sortOption,
         pricesRange: state.fetchR.pricesRange,
         filteredProducts: state.fetchR.filteredProducts,
         filterPrices: state.fetchR.filterPrices,
@@ -96,7 +96,7 @@ const mapStateToProps = (state) => { //rootreducer
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        fetchProducts: (page, basics, rating, pricesRange, filteredProducts, filterPrices) => dispatch(actions.fetchProducts(page, basics, rating, pricesRange, filteredProducts, filterPrices)),
+        fetchProducts: (page, filterOption, sortOption, pricesRange, filteredProducts, filterPrices) => dispatch(actions.fetchProducts(page, filterOption, sortOption, pricesRange, filteredProducts, filterPrices)),
         addPage: () => dispatch(actions.addPage()),
     }
 }

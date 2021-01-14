@@ -1,2 +1,11 @@
 //Exporto las funciones que utilizaré para mi mapDispatchToProps
-export { fetchProducts, addPage } from './fetchActions';
+export { fetchProductsSuccess,
+    fetchProductsFailure,
+    fetchProducts, 
+    addPage,
+    filterBasics,
+    filterBasicsRemove,
+    filterPrices,
+    sortRatingPrices,
+    sortRemove,
+} from './fetchActions';

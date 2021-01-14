@@ -3,20 +3,19 @@ import { ADD_PAGE,
     FETCH_PRODUCTS_FAILURE, 
     FILTER_BASICS, 
     FILTER_BASICS_REMOVE,
-    SORT_RATING,
-    SORT_RATING_REMOVE,
-    FILTER_PRICES, 
-    SORT_PRICES } from '../actions/actions';
+    SORT_RATING_PRICES,
+    SORT_REMOVE,
+    FILTER_PRICES, } from '../actions/actions';
 
 const initialState = {
     response: null,
     products: [],
     page: 1,
-    basics: null, // filter option
-    rating: null, // sort option
+    filterOption: null, // filter option
+    sortOption: null, // sort option
     pricesRange: null, // rangeSelected
     filteredProducts: [],
-    filterPrices: false, //isFilterRangePricesOn
+    filterPricesOn: false, //isFilterRangePricesOn
 };
 
 const fetchReducer = (state = initialState, action) => {
@@ -41,25 +40,26 @@ const fetchReducer = (state = initialState, action) => {
         case FILTER_BASICS:
             return {
                 ...state,
-                basics: action.basics,
+                filterOption: action.filterOption,
                 page: 1, 
                 products: [],
             };
         case FILTER_BASICS_REMOVE:
             return{
                 ...state,
-                basics: null,
+                filterOption: null,
                 page: 1,
                 products: [],
             };
-        case SORT_RATING: 
+        case SORT_RATING_PRICES: 
+            //¿Debo hacer una validación igual a filter prices? ¿por ende otro arreglo?
             return {
                 ...state,
                 rating: action.rating,
                 page: 1,
                 products: [],
             };
-        case SORT_RATING_REMOVE:
+        case SORT_REMOVE:
             return {
                 ...state,
                 rating: null,
@@ -67,16 +67,16 @@ const fetchReducer = (state = initialState, action) => {
                 products: [],
             };
         case FILTER_PRICES:
-            const filterProducts =[]; // Genero nuevo arreglo para no modificar el original
-            if (action.range === '1_to_50') {
+            let filterProducts =[]; // Genero nuevo arreglo para no modificar el original
+            if (action.priceFilter === '1_to_50') {
                 filterProducts = state.products.filter((product) => {
                     return product.price >= 1 && product.price <= 50;
                 })
-            } else if (action.range === '51_to_100') {
+            } else if (action.priceFilter === '51_to_100') {
                 filterProducts = state.products.filter((product) => {
                     return product.price >= 51 && product.price <= 100;
                 })
-            } else if (action.range === '101_to_200') {
+            } else if (action.priceFilter === '101_to_200') {
                 filterProducts = state.products.filter((product) => {
                     return product.price >= 101 && product.price <= 200;
                 })
@@ -85,7 +85,7 @@ const fetchReducer = (state = initialState, action) => {
                 ...state,
                 filteredProducts: filterProducts,
                 filterPrices: true, 
-                pricesRange: action.range,
+                pricesRange: action.priceFilter,
             }
         default: return state;
     };
