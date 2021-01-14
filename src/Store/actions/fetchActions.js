@@ -52,7 +52,7 @@ export const fetchProducts = (page, filterOption, sortOption, filterPricesOn, pr
                 console.log(responseJSON.products);
                 dispatch(fetchProductsSuccess(responseJSON));
                 if (filterPricesOn) {
-                    filterPrices(pricesRange);
+                    dispatch(filterPrices(pricesRange));
                 };
             })
             .catch(error => {

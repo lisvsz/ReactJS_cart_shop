@@ -84,7 +84,7 @@ const fetchReducer = (state = initialState, action) => {
             return {
                 ...state,
                 filteredProducts: filterProducts,
-                filterPrices: true, 
+                filterPricesOn: true, 
                 pricesRange: action.priceFilter,
             }
         default: return state;

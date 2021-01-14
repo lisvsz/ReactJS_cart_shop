@@ -15,7 +15,7 @@ const DisplayProducts = (props) => {
     //Data products
     useEffect (() => {
         fetchProducts(page, filterOption, sortOption, filterPricesOn, pricesRange);
-    }, [fetchProducts, page, filterOption, sortOption]) // Por que filterPricesOn no está aqui?
+    }, [fetchProducts, page, filterOption, sortOption])
 
     //Filter
     let productsToRender = [];
@@ -90,13 +90,13 @@ const mapStateToProps = (state) => { //rootreducer
         sortOption: state.fetchR.sortOption,
         pricesRange: state.fetchR.pricesRange,
         filteredProducts: state.fetchR.filteredProducts,
-        filterPrices: state.fetchR.filterPrices,
+        filterPricesOn: state.fetchR.filterPricesOn,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        fetchProducts: (page, filterOption, sortOption, pricesRange, filteredProducts, filterPrices) => dispatch(actions.fetchProducts(page, filterOption, sortOption, pricesRange, filteredProducts, filterPrices)),
+        fetchProducts: (page, filterOption, sortOption, pricesRange, filteredProducts, filterPricesOn) => dispatch(actions.fetchProducts(page, filterOption, sortOption, pricesRange, filteredProducts, filterPricesOn)),
         addPage: () => dispatch(actions.addPage()),
     }
 }
