@@ -1,11 +1,12 @@
 import  React from 'react';
+import  { Link } from 'react-router-dom';
 import './Product.css';
 import star  from '../../assets/star-rate.svg';
 import comment from '../../assets/comment.png';
 
 const Product = (props) => {
 
-    const { productImg, productName, productCom, productPrice, productBasic} = props;
+    const { productImg, productName, productCom, productPrice, productBasic, productId} = props;
 
     return (
         <div className="productCard">
@@ -23,7 +24,9 @@ const Product = (props) => {
                 </div>
                 <p className="productPrice">${productPrice}</p>
             </div>
-            <button className="btnDetails">See details</button>
+            <Link to={`/ProductDetails/${productId}`}>
+                <button className="btnDetails">See details</button>
+            </Link>
             <button className="btnAddCart">Add to cart</button>
         </div>
     )

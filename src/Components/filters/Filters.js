@@ -5,7 +5,7 @@ import './Filters.css';
 
 const Filters = (props) => {
 
-    const { basicsClick, basicsClickRemove, sortOptionClick, sortOptionClickRemove, filterPrices} = props;
+    const { basicsClick, basicsClickRemove, sortOptionClick, sortOptionClickRemove, filterPrices } = props;
 
     //Filter basics
     const basicsChecked = (event) => {
@@ -23,8 +23,12 @@ const Filters = (props) => {
     const sortHigherPrice = (event) => {
         console.log('entra a función sortHigherPrice')
         console.log(event)
-        if(event.target.value === 'price') {
-            console.log('higher price :D')
+        if(event.target.value === 'Prices') {
+            sortOptionClick(event.target.value);
+            console.log('higher price first :D')
+        } else if (event.target.value === 'Rating') {
+            sortOptionClick(event.target.value);
+            console.log('higher rating first :D')
         } else {
             sortOptionClickRemove();
         }
@@ -66,8 +70,8 @@ const Filters = (props) => {
                     <h2>Sort by:</h2>
                         <select name="price" onChange={sortHigherPrice}>
                             <option value="default"></option>
-                            <option value="price">Price</option>
-                            <option value="rating">Rating</option>
+                            <option value="Prices">Price</option>
+                            <option value="Rating">Rating</option>
                         </select>
                 </div>
             </div>

@@ -11,7 +11,7 @@ const initialState = {
     response: null,
     products: [],
     page: 1,
-    filterOption: null, // filter option
+    filterOption: null, // filter option  antes rating
     sortOption: null, // sort option
     pricesRange: null, // rangeSelected
     filteredProducts: [],
@@ -52,17 +52,17 @@ const fetchReducer = (state = initialState, action) => {
                 products: [],
             };
         case SORT_RATING_PRICES: 
-            //¿Debo hacer una validación igual a filter prices? ¿por ende otro arreglo?
+            //¿Debo hacer una validación igual a filter prices? ¿por ende otro arreglo? backend
             return {
                 ...state,
-                rating: action.rating,
+                sortOption: action.sortOption,
                 page: 1,
                 products: [],
             };
         case SORT_REMOVE:
             return {
                 ...state,
-                rating: null,
+                sortOption: null,
                 page: 1,
                 products: [],
             };

@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import { BrowserRouter as Router} from 'react-router-dom';
 import './DisplayProducts.css';
 import Filters from '../../Components/filters/Filters';
 import Product from '../../Components/product/Product';
@@ -56,6 +57,7 @@ const DisplayProducts = (props) => {
     }, [])
 
     return (
+        <Router>
         <div className ="productsBox">
             <Filters
             />
@@ -70,7 +72,7 @@ const DisplayProducts = (props) => {
                         productCom={product.comments}
                         productPrice={product.price}
                         productBasic={product.basics}
-                        //Falta rating
+                        productRate={product.rate}
                         />
                         )
                     })
@@ -78,6 +80,7 @@ const DisplayProducts = (props) => {
                 </div>
             </div>
         </div>
+        </Router>
     )
 }
 
