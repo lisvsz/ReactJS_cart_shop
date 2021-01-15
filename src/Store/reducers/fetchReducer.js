@@ -1,6 +1,8 @@
 import { ADD_PAGE, 
     FETCH_PRODUCTS_SUCCESS, 
     FETCH_PRODUCTS_FAILURE, 
+    FETCH_PRODUCTS_DETAILS,
+    FETCH_PRODUCTS_DETAILS_FAILURE,
     FILTER_BASICS, 
     FILTER_BASICS_REMOVE,
     SORT_RATING_PRICES,
@@ -9,6 +11,7 @@ import { ADD_PAGE,
 
 const initialState = {
     response: null,
+    responseDetails: {},
     products: [],
     page: 1,
     filterOption: null, // filter option  antes rating
@@ -16,6 +19,7 @@ const initialState = {
     pricesRange: null, // rangeSelected
     filteredProducts: [],
     filterPricesOn: false, //isFilterRangePricesOn
+    productId: null, ///////NEW
 };
 
 const fetchReducer = (state = initialState, action) => {
@@ -33,6 +37,16 @@ const fetchReducer = (state = initialState, action) => {
                 products: state.products.concat(action.response.products),
             };
         case FETCH_PRODUCTS_FAILURE:
+            return {
+                ...state,
+                error: action.error,
+            };
+        case FETCH_PRODUCTS_DETAILS: /////////NEW
+            return {
+                ...state,
+                responseDetails: action.response,
+            };
+        case FETCH_PRODUCTS_DETAILS_FAILURE: /////////NEW
             return {
                 ...state,
                 error: action.error,

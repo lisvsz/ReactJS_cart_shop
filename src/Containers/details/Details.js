@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import './Details.css';
-import coffee from '../../assets/coffee.jpg';
 import star from '../../assets/star-rate.svg';
 import comment from '../../assets/comment.png';
+import { fetchProductsDetails } from '../../Store/actions/fetchActions';
+import { useParams } from 'react-router';
 
-const Details = () => {
+const Details = (props) => {
+
+    const { response, fetchProductsDetails } = props;
+
+    const { productId } = useParams();
+
+    useEffect(() => {
+        fetchProductsDetails(productId);
+    }, [fetchProductsDetails, productId]);
+    console.log(response);
     return (
         <div className="detailsBox">
-            <img className="productPic" src = {coffee} alt="coffee" />
+            <img className="productPic" src = {response.img} alt="coffee" />
             <div className="productDetailsCard">
-                <h1>Coffee Maker</h1>
+                <h1>{response.name}</h1>
                 <div className="starsDetails">
                     <img className="star" src = {star} alt="star" />
                     <img className="star" src = {star} alt="star" />
@@ -41,4 +52,16 @@ const Details = () => {
     )
 }
 
-export default Details;
+const mapStateToProps = (state) => { //rootreducer
+    return {
+        response: state.fetchR.responseDetails,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        fetchProductsDetails: (productId) => dispatch(fetchProductsDetails(productId)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Details);

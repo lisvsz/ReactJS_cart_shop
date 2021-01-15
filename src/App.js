@@ -6,7 +6,6 @@ import ModalCart from './Components/modalCart/ModalCart';
 
 import DisplayProducts from './Containers/displayProducts/DisplayProducts';
 import Details from './Containers/details/Details';
-import Shipped from './Containers/shipped/Shipped';
 import Form from './Containers/form/Form';
 
 function App() {
@@ -15,9 +14,8 @@ function App() {
         < Header />
         <Switch>
           <Route path="/" exact component={DisplayProducts} />
-          <Route path="/ProductDetails/:productId" exact component={{Details}} />
-          < Shipped />
-          < Form />
+          <Route path="/product/:productId" component={Details} />
+          <Route path="/ordering" component={{Form}} />
         </Switch>
       </div>
   );

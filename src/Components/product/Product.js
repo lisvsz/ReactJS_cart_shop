@@ -24,7 +24,7 @@ const Product = (props) => {
                 </div>
                 <p className="productPrice">${productPrice}</p>
             </div>
-            <Link to={`/ProductDetails/${productId}`}>
+            <Link to={`/product/${productId}`}>
                 <button className="btnDetails">See details</button>
             </Link>
             <button className="btnAddCart">Add to cart</button>

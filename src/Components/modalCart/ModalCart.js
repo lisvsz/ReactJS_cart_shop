@@ -1,12 +1,12 @@
 import React from 'react';
 import './ModalCart.css';
-import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import coffee from '../../assets/coffee.jpg';
 import recycleBin from '../../assets/recycle-bin.png';
 import close from '../../assets/close.png';
 
-const ModalCart = () => {
+const ModalCart = (props) => {
     return (
         <div className="modalCart">
             <div className="modalCard">
@@ -15,7 +15,7 @@ const ModalCart = () => {
                 <p>Subtotal: <span className="subtotalList">$105</span></p>
                 <button className="btnProceedPay">Proceed to payment</button>
                 <div className="productSelected">                        
-                    <img className="productListImg" src = {coffee} alt="product" />
+                    <img className="productListImg" src = {props.img} alt="product" />
                     <p className="productListName">Coffee Maker</p>
                     <p className="productListPrice">$105</p>
                     <img className="deleteProduct" src = {recycleBin} alt="trash" />
@@ -27,7 +27,9 @@ const ModalCart = () => {
                     <img className="deleteProduct" src = {recycleBin} alt="trash" />
                 </div>
                 <p>Subtotal: <span className="subtotalList">$105</span></p>
-                <button className="btnProceedPay">Proceed to payment</button>
+                <Link to={'/ordering'}>
+                    <button className="btnProceedPay">Proceed to payment</button>
+                </Link>
             </div>
         </div>
     )

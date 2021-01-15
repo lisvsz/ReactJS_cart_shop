@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import { BrowserRouter as Router} from 'react-router-dom';
 import './DisplayProducts.css';
 import Filters from '../../Components/filters/Filters';
 import Product from '../../Components/product/Product';
@@ -57,7 +56,6 @@ const DisplayProducts = (props) => {
     }, [])
 
     return (
-        <Router>
         <div className ="productsBox">
             <Filters
             />
@@ -67,6 +65,8 @@ const DisplayProducts = (props) => {
                     {productsToRender.map(( product => {
                         return(
                         <Product 
+                        key={product.id}   
+                        productId={product.id}
                         productImg={product.img}
                         productName={product.name}
                         productCom={product.comments}
@@ -80,7 +80,6 @@ const DisplayProducts = (props) => {
                 </div>
             </div>
         </div>
-        </Router>
     )
 }
 

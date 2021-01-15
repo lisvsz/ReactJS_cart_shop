@@ -22,3 +22,11 @@ header {
     width: 23px;
     z-index: 2;
 }
+
+.on {
+    display: block;
+}
+
+.off{
+    display: none;
+}

@@ -20,8 +20,8 @@ const Filters = (props) => {
     }
 
     //Sort Rating
-    const sortHigherPrice = (event) => {
-        console.log('entra a función sortHigherPrice')
+    const sortHigherPriceRating = (event) => {
+        console.log('entra a función sortHigherPriceRating')
         console.log(event)
         if(event.target.value === 'Prices') {
             sortOptionClick(event.target.value);
@@ -68,7 +68,7 @@ const Filters = (props) => {
                 <br/>
                 <div className="sortProducts">
                     <h2>Sort by:</h2>
-                        <select name="price" onChange={sortHigherPrice}>
+                        <select name="price" onChange={sortHigherPriceRating}>
                             <option value="default"></option>
                             <option value="Prices">Price</option>
                             <option value="Rating">Rating</option>
