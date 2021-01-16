@@ -15,10 +15,10 @@ const Details = (props) => {
     useEffect(() => {
         fetchProductsDetails(productId);
     }, [fetchProductsDetails, productId]);
-    console.log(response);
+    console.log(response.comments)
     return (
         <div className="detailsBox">
-            <img className="productPic" src = {response.img} alt="coffee" />
+            <img className="productPic" src = {response.img} alt="productImg" />
             <div className="productDetailsCard">
                 <h1>{response.name}</h1>
                 <div className="starsDetails">
@@ -29,7 +29,7 @@ const Details = (props) => {
                     <img className="star" src = {star} alt="star" />
                     <p classname="numberComments">2</p><img className="comment" src = {comment} alt="comment" />
                 </div>
-                <h1 className="price">$105</h1>
+                <h1 className="price">${response.price}</h1>
                 <p className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
                 ex ea commodo consequat...</p> <br/>
@@ -40,6 +40,12 @@ const Details = (props) => {
             <div className="commentsBox">
                 Comments:
                 <div className="comments">
+                    {/*{response.comments.map((item => {
+                        return(
+                        user={item.user}
+                        )
+                        })
+                    )} */}
                     <p>Jon Doe <br/> Excelent Product :)</p> 
                     <hr className="v3" />
                     <p>Jon Doe <br/> Excelent Product :)</p>
