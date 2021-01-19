@@ -1,11 +1,23 @@
 .modalCart {
     background-color: cadetblue;
     font-size: 18px;
-    height: 812px;
-    position: absolute;
+    height: 85%;
+    max-width: 70%;
+    overflow: scroll;
+    position: fixed;
     right: 0;
     text-align: start;
+    transition: transform 0.3s ease-out;
     width: 493px;
+    z-index: 100;
+}
+
+.openCart {
+    transform: translateX(0);
+}
+
+.closeCart {
+    transform: translateX(100%);
 }
 
 .modalCard {
@@ -29,4 +41,12 @@
     background-color: #2980B9;
     margin-top: 15px;
     width: 370px;
+}
+
+.back-drop {
+    background-color: rgba(63, 61, 61, 0.692);
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
 }

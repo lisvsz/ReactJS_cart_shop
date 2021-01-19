@@ -1,0 +1,32 @@
+header {
+    align-items: center;
+    background-color: #3498DB;
+    display: flex;
+    height: 90px;
+    justify-content: space-between;
+    padding-left: 37px;
+    padding-right: 48px;
+    position:relative;
+}
+
+.cartCounter {
+    background: rgb(243, 66, 66);
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 700;
+    height: 23px;
+    position: absolute;
+    right: 88px;
+    text-align: center;
+    top: 20px;
+    width: 23px;
+    z-index: 2;
+}
+
+.on {
+    display: block;
+}
+
+.off{
+    display: none;
+}

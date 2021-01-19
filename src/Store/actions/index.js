@@ -9,3 +9,8 @@ export { fetchProductsSuccess,
     sortRatingPrices,
     sortRemove,
 } from './fetchActions';
+
+export {
+    addProductCart,
+    removeProductCart,
+} from './cartActions';

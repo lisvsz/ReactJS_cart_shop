@@ -1,21 +1,16 @@
 import { ADD_PRODUCT, REMOVE_PRODUCT } from './actions'; 
 
-export const addProductCart = (productId, productName, productPrice, productBasics, productImg) => {
+export const addProductCart = (productInfo) => {
     return {
         type: ADD_PRODUCT,
-        payload: {
-            id: productId,
-            name: productName,
-            price: productPrice,
-            basics: productBasics,
-            img: productImg,
-        }
+        product: productInfo,
     }
 }
 
-export const removeProductCart = (productId) => {
+export const removeProductCart = (productId, price) => {
     return {
         type: REMOVE_PRODUCT,
-        /*id*/payload: { productId }
+        id: productId,
+        price: price,
     }
 }

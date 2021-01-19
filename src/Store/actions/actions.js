@@ -14,9 +14,6 @@ export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 export const GET_TOTALS = 'GET_TOTALS' // $ y cantidad
 
-export const OPEN_CART = 'OPEN_CART'
-export const CLOSE_CART = 'CLOSE_CART'
-
 //TOTAL_PRODUCTS
 
 //4 fetch

@@ -1,0 +1,22 @@
+.commentContainer {
+    padding-left: 20px;
+    width: 800px;
+}
+
+.v3 {
+    border: 1px solid #E3E3E3;
+    right: 220px;
+    top: 492px;
+    width: 873px;
+}
+
+.userComment {
+    font-size: 14px;
+}
+
+.commentFromUser {
+    font-size: 16px;
+    height: 10px;
+    width: 500px;
+    text-overflow: clip;
+}

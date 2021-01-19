@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Comments from '../../Components/comments/comments';
 import { connect } from 'react-redux';
 import './Details.css';
 import star from '../../assets/star-rate.svg';
@@ -38,21 +39,23 @@ const Details = (props) => {
             </div>
             <hr className="v2" />
             <div className="commentsBox">
-                Comments:
-                <div className="comments">
+                <Comments
+                    comments={response.comments}
+                />
+                {/*<div className="comments">
                     {/*{response.comments.map((item => {
                         return(
                         user={item.user}
                         )
                         })
-                    )} */}
+                    )} 
                     <p>Jon Doe <br/> Excelent Product :)</p> 
                     <hr className="v3" />
                     <p>Jon Doe <br/> Excelent Product :)</p>
                     <hr className="v3" />
                     <p>Jon Doe <br/> Excelent Product :)</p>
                     <hr className="v3" />
-                </div>
+                </div> */}
             </div>
         </div>
     )
