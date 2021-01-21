@@ -73,6 +73,7 @@ const DisplayProducts = (props) => {
                         productPrice={product.price}
                         productBasic={product.basics}
                         productRate={product.rate}
+                        productAdded={()=> props.addProductCart(product)}
                         />
                         )
                     })
@@ -83,7 +84,7 @@ const DisplayProducts = (props) => {
     )
 }
 
-const mapStateToProps = (state) => { //rootreducer
+const mapStateToProps = (state) => { //rootreducer acceder a las variables que componen mi estado global, visualizar, validación
     return {
         products: state.fetchR.products,
         response: state.fetchR.response,
@@ -96,10 +97,11 @@ const mapStateToProps = (state) => { //rootreducer
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => { //traer action creator 
     return{
         fetchProducts: (page, filterOption, sortOption, pricesRange, filteredProducts, filterPricesOn) => dispatch(actions.fetchProducts(page, filterOption, sortOption, pricesRange, filteredProducts, filterPricesOn)),
         addPage: () => dispatch(actions.addPage()),
+        addProductCart: (productInfo) => dispatch(actions.addProductCart(productInfo))
     }
 }
 

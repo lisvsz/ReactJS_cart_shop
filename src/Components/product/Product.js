@@ -13,7 +13,7 @@ const Product = (props) => {
             {productBasic? <div className="basicLabel">BASIC</div> : <div className="noBasicLabel"></div>}
             <img className="productImg" src = {productImg} alt="productImg" />
             <div className ="productInfo">
-                <p className="productName">{productName}</p> <br></br>
+                <p className="productName">{productName}</p>
                 <div className="starComm">
                     <img className="star" src = {star} alt="star" />
                     <img className="star" src = {star} alt="star" />
@@ -27,7 +27,7 @@ const Product = (props) => {
             <Link to={`/product/${productId}`}>
                 <button className="btnDetails">See details</button>
             </Link>
-            <button className="btnAddCart">Add to cart</button>
+            <button className="btnAddCart" onClick={props.productAdded}>Add to cart</button>
         </div>
     )
 } 

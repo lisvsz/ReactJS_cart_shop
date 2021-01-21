@@ -7,6 +7,7 @@ import ModalCart from './Components/modalCart/ModalCart';
 import DisplayProducts from './Containers/displayProducts/DisplayProducts';
 import Details from './Containers/details/Details';
 import Form from './Containers/form/Form';
+import Success from './Containers/success/Success';
 
 function App() {
 
@@ -19,11 +20,12 @@ function App() {
   return (
       <div className="App">
         <Header clicked={drawerToggleClicked} />
-        {/*<ModalCart closed={closeModalHandler} open={show} />*/}
+        <ModalCart closed={closeModalHandler} open={show} />
         <Switch>
           <Route path="/" exact component={DisplayProducts} />
           <Route path="/product/:productId" component={Details} />
-          <Route path="/ordering" component={{Form}} />
+          <Route path="/ordering" component={Form} />
+          <Route path='/success' component={Success} />
         </Switch>
       </div>
   );

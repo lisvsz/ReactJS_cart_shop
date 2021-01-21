@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SeeMore from '../../Components/seeMoreBtn/seeMoreBtn';
 import Comments from '../../Components/comments/comments';
 import { connect } from 'react-redux';
 import './Details.css';
@@ -9,14 +10,18 @@ import { useParams } from 'react-router';
 
 const Details = (props) => {
 
-    const { response, fetchProductsDetails } = props;
+    const { response, fetchProductsDetails, productBasic } = props;
 
     const { productId } = useParams();
 
     useEffect(() => {
         fetchProductsDetails(productId);
     }, [fetchProductsDetails, productId]);
-    console.log(response.comments)
+    if (!response.comments) { return <div>Loading...</div> }
+    console.log(response.description);
+    console.log(response.comments);
+    console.log(response);
+
     return (
         <div className="detailsBox">
             <img className="productPic" src = {response.img} alt="productImg" />
@@ -28,34 +33,18 @@ const Details = (props) => {
                     <img className="star" src = {star} alt="star" />
                     <img className="star" src = {star} alt="star" />
                     <img className="star" src = {star} alt="star" />
-                    <p classname="numberComments">2</p><img className="comment" src = {comment} alt="comment" />
+                    <p classname="numberComments">{response.comments.length}</p><img className="comment" src = {comment} alt="comment" />
                 </div>
                 <h1 className="price">${response.price}</h1>
-                <p className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                ex ea commodo consequat...</p> <br/>
-                see more.
-                <button className="btnAddCart btnCartDetails">Add to cart</button>
+                {productBasic? <div className="basicLabelDetails">BASIC</div> : <div className="noBasicLabel"></div>} 
+                <SeeMore completeComment = {response.description} />
+                <button className="btnAddCart btnCartDetails" onClick={props.productAdded}>Add to cart</button> {/*no funciona*/}
             </div>
             <hr className="v2" />
             <div className="commentsBox">
                 <Comments
                     comments={response.comments}
                 />
-                {/*<div className="comments">
-                    {/*{response.comments.map((item => {
-                        return(
-                        user={item.user}
-                        )
-                        })
-                    )} 
-                    <p>Jon Doe <br/> Excelent Product :)</p> 
-                    <hr className="v3" />
-                    <p>Jon Doe <br/> Excelent Product :)</p>
-                    <hr className="v3" />
-                    <p>Jon Doe <br/> Excelent Product :)</p>
-                    <hr className="v3" />
-                </div> */}
             </div>
         </div>
     )

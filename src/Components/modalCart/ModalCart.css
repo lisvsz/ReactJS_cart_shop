@@ -1,13 +1,14 @@
 .modalCart {
-    background-color: cadetblue;
+    background-color: white;
     font-size: 18px;
-    height: 85%;
-    max-width: 70%;
+    height: 100%;
     overflow: scroll;
+    padding-top: 40px;
     position: fixed;
     right: 0;
     text-align: start;
-    transition: transform 0.3s ease-out;
+    transition: transform 0.5s ease-out;
+    top: 90px;
     width: 493px;
     z-index: 100;
 }
@@ -21,7 +22,7 @@
 }
 
 .modalCard {
-    padding: 31px 77px 208px 48px;
+    padding: 0 77px 208px 48px;
 }
 
 .btnClose {
@@ -29,6 +30,7 @@
     height: 30px;
     position: absolute; 
     right: 19px;
+    top: 19px;
     width: 30px;
 }
 

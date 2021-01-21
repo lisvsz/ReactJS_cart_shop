@@ -7,10 +7,10 @@ export const addProductCart = (productInfo) => {
     }
 }
 
-export const removeProductCart = (productId, price) => {
+export const removeProductCart = (productId, productPrice) => {
     return {
         type: REMOVE_PRODUCT,
         id: productId,
-        price: price,
+        price: productPrice, // por qué se llama como éste y no por el nombre del parámetro?
     }
 }

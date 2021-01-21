@@ -1,0 +1,11 @@
+.seeMore {
+    color: #2980B9;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 35px; 
+}
+
+.seeMore:hover {
+    color: #2980B9;
+    text-decoration: underline;
+}

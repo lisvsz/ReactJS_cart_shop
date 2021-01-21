@@ -1,25 +1,19 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import './Header.css';
+import ShoppingCartLogo from '../../Components/modalCart/logoCart';
 import globantShops from '../../assets/globant-shops.svg';
-import cart from '../../assets/cart.svg';
+import { useLocation } from 'react-router-dom';
 
 const Header = (props) => {
-    const location = useLocation();
 
-    //Abrir y cerrar carrito
-    const [show, setShow] = useState(false)
-    const closeModalHandler = () => setShow(false);
+    const location = useLocation();
 
     return (
         <header>
             <img src = {globantShops} alt="logo" />
-            {location.pathname !== '/Payment' ? 
-            <div className="on" onClick={props.clicked}>
-                <img className="cartImg" src = {cart} alt="cart" />
-                <div className="cartCounter">{props.productCounter}</div>
-            </div>
-            : null}
+            {location.pathname === '/ordering' || location.pathname === '/success' ?
+            null
+            : <ShoppingCartLogo clicked={props.clicked} productCounter={props.productCounter} />}
         </header>
     );
 }

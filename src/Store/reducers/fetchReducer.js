@@ -41,12 +41,12 @@ const fetchReducer = (state = initialState, action) => {
                 ...state,
                 error: action.error,
             };
-        case FETCH_PRODUCTS_DETAILS: /////////NEW
+        case FETCH_PRODUCTS_DETAILS: 
             return {
                 ...state,
                 responseDetails: action.response,
             };
-        case FETCH_PRODUCTS_DETAILS_FAILURE: /////////NEW
+        case FETCH_PRODUCTS_DETAILS_FAILURE:
             return {
                 ...state,
                 error: action.error,
@@ -106,5 +106,3 @@ const fetchReducer = (state = initialState, action) => {
 }
 
 export default fetchReducer;
-
-//FILTER_BASICS, FILTER_PRICES, SORT_PRICES

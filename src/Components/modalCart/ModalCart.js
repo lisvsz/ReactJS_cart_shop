@@ -1,50 +1,65 @@
 import React from 'react';
 import './ModalCart.css';
-import { Link } from 'react-router-dom';
-
-import coffee from '../../assets/coffee.jpg';
-import recycleBin from '../../assets/recycle-bin.png';
 import close from '../../assets/close.png';
+import ProductCartCard from '../product/productCartCard';
+import * as actions from '../../Store/actions/index';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const ModalCart = ( props ) => {
     
-    let attachedClasses = [ 'modalCart', 'close'];
+    const { cartProducts, itemCounter } = props;
+
+    let attachedClasses = [ 'modalCart', 'closeCart'];
     if (props.open) {
-        attachedClasses = [ 'modalCart', 'open'];
+        attachedClasses = [ 'modalCart', 'openCart'];
     }
 
     return (
         <div>
             { props.open ? <div className='back-drop' onClick={props.closed}></div> : null }
-            {/*{ show? <div onClick={closeModalHandler} className="back-drop"></div> : null }*/}
             <div className={attachedClasses.join(' ')}>
-            <div className="modalCart">
                 <div className="modalCard">
-                    <img className="btnClose" src = {close} alt="btnClose" />
+                    <img className="btnClose" src = {close} onClick={props.closed} alt="btnClose" />
                     <p className="cartTitle">Cart:</p>
                     <p>Subtotal: <span className="subtotalList">$105</span></p>
                     <button className="btnProceedPay">Proceed to payment</button>
-                    <div className="productSelected">                        
-                        <img className="productListImg" src = {props.img} alt="product" />
-                        <p className="productListName">Coffee Maker</p>
-                        <p className="productListPrice">$105</p>
-                        <img className="deleteProduct" src = {recycleBin} alt="trash" />
+                    
+                    <div>
+                    {cartProducts.map((product) => {
+                        return (
+                            <ProductCartCard 
+                                key={product.id}
+                                productImg={product.img}
+                                productName={product.name}
+                                productPrice={product.price}
+                            />
+                        )
+                    })}
                     </div>
-                    <div className="productSelected">                        
-                        <img className="productListImg" src = {coffee} alt="product" />
-                        <p className="productListName">Coffee Maker</p>
-                        <p className="productListPrice">$105</p>
-                        <img className="deleteProduct" src = {recycleBin} alt="trash" />
-                    </div>
+
                     <p>Subtotal: <span className="subtotalList">$105</span></p>
                     <Link to={'/ordering'}>
                         <button className="btnProceedPay">Proceed to payment</button>
                     </Link>
                 </div>
             </div>
-            </div>
         </div>
     )
 }
 
-export default ModalCart;
+const mapStateToProps = (state) => {
+    return {
+        cartProducts: state.cartR.cart,
+        totalPrice: state.cartR.totalPrice,
+        productCounter: state.cartR.productCounter,        
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        removeProductCart: (productId, productPrice) => dispatch(actions.removeProductCart(productId, productPrice)), /// debe llamarse igual en el reducer que el action?
+    }
+}
+
+export default connect (mapStateToProps, mapDispatchToProps)(ModalCart);

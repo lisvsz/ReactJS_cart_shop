@@ -1,13 +1,15 @@
-import React from 'react'; ///////change
-import shoppingCartSVG from '../../../assets/cart.svg';
-
-import './ShoppingCartLogo.css'
+import React from 'react';
+import cart from '../../assets/cart.svg';
+import './logoCart.css'
 
 const ShoppingCartLogo = (props) => {
+
     return (
-        <div className='CartToggle' onClick={props.clicked}>
-            <img src={shoppingCartSVG} alt='shopping-cart-svg' />
-            <p className='PriceShoppingCart'>{props.itemCounter}</p>
+        <div>
+            <div className="cartLogo" onClick={props.clicked}>
+                <img className="cartImg" src = {cart} alt="cart" />
+                <div className="cartCounter">{props.productCounter}</div>
+            </div>
         </div>
     );
 };

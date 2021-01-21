@@ -9,11 +9,13 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     row-gap: 34px;
-    column-gap: 10px;
+    column-gap: 120px;
     padding: 88px;
 }
 
 .productsBox {
     display: flex;
     flex-direction: row;
+    position: absolute;
+    top: 90px;
 }
