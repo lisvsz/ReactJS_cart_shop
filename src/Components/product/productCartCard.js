@@ -4,12 +4,18 @@ import recycleBin from '../../assets/recycle-bin.png';
 
 
 const ProductCartCard = (props) => {
+
+    const { productBasics, productImg, productName, productPrice, removeProductCart } = props;
+
     return (
         <div className="productSelected">                        
-            <img className="productListImg" src = {props.productImg} alt="product" />
-            <p className="productListName">{props.productName}</p>
-            <p className="productListPrice">${props.productPrice}</p>
-            <img className="deleteProduct" src = {recycleBin} alt="trash" onClick={props.productRemoved} />
+            <div className="productImgLabel">
+                {productBasics? <div className="basicLabelCart">BASICS</div> : null }
+                <img className="productListImg" src = {productImg} alt="product" />
+            </div>
+            <p className="productListName">{productName}</p>
+            <p className="productListPrice">${productPrice}</p>
+            <img className="deleteProduct" src = {recycleBin} alt="trash" onClick={removeProductCart} />
         </div>
     )
 }

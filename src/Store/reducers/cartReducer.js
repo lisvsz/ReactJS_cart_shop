@@ -15,24 +15,24 @@ const addProduct = (state, action) => {
         ...state,
         cart: state.cart.concat(addToCart),
         totalPrice: state.totalPrice + parseFloat(action.product.price),
-        itemCounter: state.itemCounter + 1,
+        productCounter: state.productCounter + 1,
     }
 }
 
 const removeProduct = (state, action) => {
-    const cartUpdated = state.cartProducts.filter(product => product.id !== action.id)
+    const cartUpdated = state.cart.filter(product => product.id !== action.id)
     return {
         ...state,
         cart: cartUpdated,
         totalPrice: state.totalPrice - parseFloat(action.price),
-        itemCounter: state.itemCounter - 1,
+        productCounter: state.productCounter - 1,
     }
 }
 
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_PRODUCT:
-            return addProduct(state, action); //por qué sin sin {}
+            return addProduct(state, action);
         case REMOVE_PRODUCT:
             return removeProduct(state, action);
         default: return state;

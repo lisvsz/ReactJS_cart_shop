@@ -71,7 +71,7 @@ const DisplayProducts = (props) => {
                         productName={product.name}
                         productCom={product.comments}
                         productPrice={product.price}
-                        productBasic={product.basics}
+                        productBasics={product.basics}
                         productRate={product.rate}
                         productAdded={()=> props.addProductCart(product)}
                         />

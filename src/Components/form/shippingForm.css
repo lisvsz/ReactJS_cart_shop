@@ -1,0 +1,6 @@
+.shippingForm {
+    display: grid;
+    grid-template-columns: 250px 250px;
+    margin-top: 90px;
+    text-align: start;
+}

@@ -25,7 +25,7 @@ function App() {
           <Route path="/" exact component={DisplayProducts} />
           <Route path="/product/:productId" component={Details} />
           <Route path="/ordering" component={Form} />
-          <Route path='/success' component={Success} />
+          <Route path="/success" component={Success} />
         </Switch>
       </div>
   );

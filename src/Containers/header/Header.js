@@ -3,9 +3,11 @@ import './Header.css';
 import ShoppingCartLogo from '../../Components/modalCart/logoCart';
 import globantShops from '../../assets/globant-shops.svg';
 import { useLocation } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const Header = (props) => {
 
+    const { clicked, productCounter } = props;
     const location = useLocation();
 
     return (
@@ -13,9 +15,15 @@ const Header = (props) => {
             <img src = {globantShops} alt="logo" />
             {location.pathname === '/ordering' || location.pathname === '/success' ?
             null
-            : <ShoppingCartLogo clicked={props.clicked} productCounter={props.productCounter} />}
+            : <ShoppingCartLogo clicked={clicked} productCounter={productCounter} />}
         </header>
     );
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+    return {
+        productCounter: state.cartR.productCounter,
+    }
+}
+
+export default connect(mapStateToProps)(Header);

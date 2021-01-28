@@ -6,11 +6,11 @@ import comment from '../../assets/comment.png';
 
 const Product = (props) => {
 
-    const { productImg, productName, productCom, productPrice, productBasic, productId} = props;
+    const { productImg, productName, productCom, productPrice, productBasics, productId} = props;
 
     return (
         <div className="productCard">
-            {productBasic? <div className="basicLabel">BASIC</div> : <div className="noBasicLabel"></div>}
+            {productBasics? <div className="basicLabel">BASIC</div> : null}
             <img className="productImg" src = {productImg} alt="productImg" />
             <div className ="productInfo">
                 <p className="productName">{productName}</p>

@@ -47,13 +47,18 @@
 }
 
 .basicLabelDetails {
+    align-items: center;
     background-color: #11D000;
     color: #ffffff;
+    display: flex;
     font-size: 14px;
     font-weight: 400;
     height: 30px;
+    justify-content: center;
+    right: 120px;
     position: absolute;
-    width: 90px;
+    top: 85px;
+    width: 120px;
 }
 
 .price {

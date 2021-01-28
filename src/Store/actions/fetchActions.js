@@ -14,14 +14,14 @@ export const fetchProductsSuccess = (response) => {
     return {
         type: FETCH_PRODUCTS_SUCCESS,
         response: response,
-    }
+    };
 };
 
 export const fetchProductsFailure = (error) => {
     return {
         type: FETCH_PRODUCTS_FAILURE,
         error: error
-    }
+    };
 };
 // fetchProducts(page, filterOption, sortOption, filterPricesOn, pricesRange);
 export const fetchProducts = (page, filterOption, sortOption, filterPricesOn, pricesRange) => {
@@ -60,21 +60,21 @@ export const fetchProducts = (page, filterOption, sortOption, filterPricesOn, pr
             .catch(error => {
                 dispatch(fetchProductsFailure(error));
             });
-        }
+        };
 };
 
 export const fetchProductsDetailsSuccess = (response) => {
     return {
         type: FETCH_PRODUCTS_DETAILS, 
         response: response,
-    }
+    };
 };
 
 export const fetchProductsDetailsFailure = (error) => {
     return {
         type: FETCH_PRODUCTS_DETAILS_FAILURE,
         error: error
-    }
+    };
 };
 
 //Fetch sección detalle productos
@@ -91,46 +91,46 @@ export const fetchProductsDetails = (productId) => {
             .catch(error => {
                 dispatch(fetchProductsDetailsFailure(error));
             });
-    }
+    };
 };
 
 export const addPage = () => {
     return {
         type: ADD_PAGE,
-    }
+    };
 };
 
 export const filterBasics = (filterOption) => {
     return {
         type: FILTER_BASICS,
         filterOption: filterOption,
-    }
+    };
 };
 
 export const filterBasicsRemove = () => {
     return {
         type: FILTER_BASICS_REMOVE,
-    }
+    };
 };
 
 export const filterPrices = (priceFilter) => {
     return {
         type: FILTER_PRICES,
         priceFilter: priceFilter,
-    }
+    };
 };
 
 export const sortRatingPrices = (sortOption) => {
     return {
         type: SORT_RATING_PRICES,
         sortOption: sortOption,
-    }
+    };
 };
 
 export const sortRemove = () => {
     return {
         type: SORT_REMOVE,
-    }
+    };
 };
 
 /*useEffect (() => {

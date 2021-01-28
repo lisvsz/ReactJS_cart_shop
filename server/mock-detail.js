@@ -5,6 +5,7 @@ const Detail = [
     name: 'Lava lamp',
     rate: '4.5',
     price: '120.00',
+    basics: true,
     comments: [
       {
         user: 'Jon Doe',
@@ -29,6 +30,7 @@ const Detail = [
     name: 'Cup coffe',
     rate: '4.5',
     price: '20.00',
+    basics: false,
     comments: [
       {
         user: 'Jon Doe',
@@ -53,6 +55,7 @@ const Detail = [
     name: 'Canada Pencil',
     rate: '2.5',
     price: '5.00',
+    basics: false,
     comments: [
       {
         user: 'Jon Doe',
@@ -77,6 +80,7 @@ const Detail = [
     name: 'Cool Notebook',
     rate: '5.0',
     price: '11.00',
+    basics: true,
     comments: [
       {
         user: 'Jon Doe',
@@ -101,6 +105,7 @@ const Detail = [
     name: 'Cool Notebook',
     rate: '5.0',
     price: '11.00',
+    basics: false,
     comments: [
       {
         user: 'Jon Doe',
@@ -125,6 +130,7 @@ const Detail = [
     name: 'Bose Quiet Comfort II',
     rate: '5.0',
     price: '100.00',
+    basics: false,
     comments: [
       {
         user: 'Jon Doe',
@@ -149,6 +155,7 @@ const Detail = [
     name: 'Keyboard Logitech',
     rate: '4.0',
     price: '80.00',
+    basics: true,
     comments: [
       {
         user: 'Jon Doe',
@@ -173,6 +180,7 @@ const Detail = [
     name: 'MacBook Pro',
     rate: '4.5',
     price: '220.00',
+    basics: false,
     comments: [
       {
         user: 'Jon Doe',
@@ -197,6 +205,7 @@ const Detail = [
     name: 'Hello Kitty toy',
     rate: '4.5',
     price: '20.00',
+    basics: false,
     comments: [
       {
         user: 'Jon Doe',
@@ -221,6 +230,7 @@ const Detail = [
     name: 'Samsung Monitor',
     rate: '3.5',
     price: '120.00',
+    basics: true,
     comments: [
       {
         user: 'Jon Doe',
@@ -245,6 +255,7 @@ const Detail = [
     name: 'Sun glasses',
     rate: '4.5',
     price: '80.00',
+    basics: false,
     comments: [
       {
         user: 'Jon Doe',
@@ -269,6 +280,7 @@ const Detail = [
     name: 'Samsung Note',
     rate: '4.5',
     price: '220.00',
+    basics: false,
     comments: [
       {
         user: 'Jon Doe',
@@ -293,6 +305,7 @@ const Detail = [
     name: 'Introduction to Algorithms',
     rate: '1.0',
     price: '45.00',
+    basics: true,
     comments: [
       {
         user: 'Jon Doe',
@@ -317,6 +330,7 @@ const Detail = [
     name: 'Hot wheels toy',
     rate: '2.0',
     price: '21.00',
+    basics: false,
     comments: [
       {
         user: 'Jon Doe',
@@ -341,6 +355,7 @@ const Detail = [
     name: 'Samsung Fast Charger',
     rate: '1.0',
     price: '41.00',
+    basics: false,
     comments: [
       {
         user: 'Jon Doe',
@@ -365,6 +380,7 @@ const Detail = [
     name: 'Black Backpack',
     rate: '5.0',
     price: '70.00',
+    basics: true,
     comments: [
       {
         user: 'Jon Doe',
@@ -389,6 +405,7 @@ const Detail = [
     name: 'Mirror cleaner',
     rate: '4.0',
     price: '11.00',
+    basics: false,
     comments: [
       {
         user: 'Jon Doe',
@@ -413,6 +430,7 @@ const Detail = [
     name: 'Sport tennis',
     rate: '4.5',
     price: '78.00',
+    basics: false,
     comments: [
       {
         user: 'Jon Doe',
@@ -437,6 +455,7 @@ const Detail = [
     name: 'Blue sweater',
     rate: '4.5',
     price: '40.00',
+    basics: true,
     comments: [
       {
         user: 'Jon Doe',
@@ -461,6 +480,7 @@ const Detail = [
     name: 'Webcam Logitech',
     rate: '3.5',
     price: '120.00',
+    basics: false,
     comments: [
       {
         user: 'Jon Doe',

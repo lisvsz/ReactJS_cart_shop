@@ -7,10 +7,11 @@ import star from '../../assets/star-rate.svg';
 import comment from '../../assets/comment.png';
 import { fetchProductsDetails } from '../../Store/actions/fetchActions';
 import { useParams } from 'react-router';
+import { addProductCart } from '../../Store/actions';
 
 const Details = (props) => {
 
-    const { response, fetchProductsDetails, productBasic } = props;
+    const { response, fetchProductsDetails } = props;
 
     const { productId } = useParams();
 
@@ -18,9 +19,8 @@ const Details = (props) => {
         fetchProductsDetails(productId);
     }, [fetchProductsDetails, productId]);
     if (!response.comments) { return <div>Loading...</div> }
-    console.log(response.description);
-    console.log(response.comments);
-    console.log(response);
+    //console.log(products.productBasics);
+    console.log(response.basics)
 
     return (
         <div className="detailsBox">
@@ -36,9 +36,9 @@ const Details = (props) => {
                     <p classname="numberComments">{response.comments.length}</p><img className="comment" src = {comment} alt="comment" />
                 </div>
                 <h1 className="price">${response.price}</h1>
-                {productBasic? <div className="basicLabelDetails">BASIC</div> : <div className="noBasicLabel"></div>} 
+                {response.basics? <div className="basicLabelDetails">BASICS</div> : null }
                 <SeeMore completeComment = {response.description} />
-                <button className="btnAddCart btnCartDetails" onClick={props.productAdded}>Add to cart</button> {/*no funciona*/}
+                <button className="btnAddCart btnCartDetails" onClick={() => props.addProductCart(response)}>Add to cart</button>
             </div>
             <hr className="v2" />
             <div className="commentsBox">
@@ -59,6 +59,7 @@ const mapStateToProps = (state) => { //rootreducer
 const mapDispatchToProps = (dispatch) => {
     return{
         fetchProductsDetails: (productId) => dispatch(fetchProductsDetails(productId)),
+        addProductCart: (productInfo) => dispatch(addProductCart(productInfo)),
     }
 }
 

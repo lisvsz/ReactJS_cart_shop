@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 const ModalCart = ( props ) => {
     
-    const { cartProducts, itemCounter } = props;
+    const { cartProducts, removeProductCart, closed, totalPrice } = props;
 
     let attachedClasses = [ 'modalCart', 'closeCart'];
     if (props.open) {
@@ -17,30 +17,33 @@ const ModalCart = ( props ) => {
 
     return (
         <div>
-            { props.open ? <div className='back-drop' onClick={props.closed}></div> : null }
+            { props.open ? <div className='back-drop' onClick={closed}></div> : null }
             <div className={attachedClasses.join(' ')}>
                 <div className="modalCard">
-                    <img className="btnClose" src = {close} onClick={props.closed} alt="btnClose" />
+                    <img className="btnClose" src = {close} onClick={closed} alt="btnClose" />
                     <p className="cartTitle">Cart:</p>
-                    <p>Subtotal: <span className="subtotalList">$105</span></p>
-                    <button className="btnProceedPay">Proceed to payment</button>
-                    
+                    <p>Subtotal: <span className="subtotalList">${totalPrice}</span></p>
+                    <Link to={'/ordering'}>
+                        <button className="btnProceedPay" onClick={closed}>Proceed to payment</button>
+                    </Link>
                     <div>
                     {cartProducts.map((product) => {
                         return (
                             <ProductCartCard 
                                 key={product.id}
+                                productBasics={product.basics}
                                 productImg={product.img}
                                 productName={product.name}
                                 productPrice={product.price}
+                                removeProductCart={() => removeProductCart(product.id, product.price)}
                             />
                         )
                     })}
                     </div>
 
-                    <p>Subtotal: <span className="subtotalList">$105</span></p>
+                    <p>Subtotal: <span className="subtotalList">${totalPrice}</span></p>
                     <Link to={'/ordering'}>
-                        <button className="btnProceedPay">Proceed to payment</button>
+                        <button className="btnProceedPay" onClick={closed}>Proceed to payment</button>
                     </Link>
                 </div>
             </div>
@@ -51,14 +54,13 @@ const ModalCart = ( props ) => {
 const mapStateToProps = (state) => {
     return {
         cartProducts: state.cartR.cart,
-        totalPrice: state.cartR.totalPrice,
-        productCounter: state.cartR.productCounter,        
+        totalPrice: state.cartR.totalPrice,       
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        removeProductCart: (productId, productPrice) => dispatch(actions.removeProductCart(productId, productPrice)), /// debe llamarse igual en el reducer que el action?
+        removeProductCart: (productId, productPrice) => dispatch(actions.removeProductCart(productId, productPrice)), //action// debe llamarse igual en el reducer que el action?
     }
 }
 
