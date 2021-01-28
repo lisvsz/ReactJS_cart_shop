@@ -6,8 +6,8 @@ const initialState = {
 
 const purchaseSuccess = (state, action) => {
     let confirmed = false;
-    const message = action.orderData.message;
-    console.log('message', message)
+    const message = action.responseObj.message;
+    // console.log('message', message)
 
     if(message === 'success') {
         confirmed = true;
@@ -21,8 +21,7 @@ const purchaseSuccess = (state, action) => {
 
 const orderReducer = (state = initialState, action) => {
     switch (action.type) {
-        case PAYMENT:
-            return purchaseSuccess(state, action)
+        case PAYMENT: return purchaseSuccess(state, action)
             
         default: return state
     };
